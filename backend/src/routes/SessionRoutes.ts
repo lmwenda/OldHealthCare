@@ -11,10 +11,9 @@ router.get(session_endpoints.GET_ALL_SESSIONS, (req: Request, res: Response) => 
 })
 
 router.get(session_endpoints.GET_SESSION, (req: Request, res: Response) => {
-    const { session_id } = req.body;
     const session = new SessionController();
 
-    session.getSession(session_id, res);
+    session.getSession(req.params.session_id, res);
 })
 
 router.post(session_endpoints.POST_SESSION, (req: Request, res: Response) => {
@@ -34,7 +33,6 @@ router.post(session_endpoints.POST_SESSION, (req: Request, res: Response) => {
 
 router.put(session_endpoints.UPDATE_SESSION, (req: Request, res: Response) => {
     const { 
-        sessionId, 
         sessionName, 
         sessionDescription, 
         timeTaken,  
@@ -55,12 +53,12 @@ router.put(session_endpoints.UPDATE_SESSION, (req: Request, res: Response) => {
     );
 
 
-    session.updateSession(sessionId, res);
+    session.updateSession(req.params.session_id, res);
 })
 
 router.delete(session_endpoints.DELETE_SESSION, (req: Request, res: Response) => {
     const session = new SessionController();
-    session.deleteSession(req.params.sessionId, res);
+    session.deleteSession(req.params.session_id, res);
 })
 
 export default router;
