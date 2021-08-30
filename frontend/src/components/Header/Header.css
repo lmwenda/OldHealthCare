@@ -1,0 +1,89 @@
+/* Flex Containers */
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: auto;
+    padding-left: 5vw;
+
+    margin-left: 6.5vw;
+}
+
+/* General Styling */
+
+nav i{
+    color: #2360b1;
+}
+
+.main .menu{
+    padding-left: 2vw;
+}
+
+.main h1{
+    font-family: sans-serif;
+    font-size: 1.4vw;
+    max-width: 100%;
+    justify-content: flex-start;
+}
+
+nav .links{
+    justify-content: flex-end;
+}
+
+/* Getting Started Side of Menu */
+
+
+.start-menu #pricing button{
+    white-space: normal;
+    background-color: #4084dd;
+    border: 1px solid #fff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 0.5rem;
+    color: #fff;
+    margin-right: 10vw;
+}
+
+.start-menu #pricing button p{
+    font-size: 1vw;
+    font-weight: 300;
+}
+
+.start-menu #getting-started{
+    color: #4084dd;
+    text-decoration: none;
+    font-weight: bold;
+    padding-right: 1vw;
+}
+
+/* Navigation Links */
+
+#link{
+    text-decoration: none;
+    -webkit-transition: opacity 200ms ease, color 200ms ease;
+    transition: opacity 200ms ease, color 200ms ease;
+    color: #4c5458;
+    font-size: 1vw;
+    line-height: 24px;
+    cursor: pointer;
+    padding-left: 0.5vw;
+}
+
+#first{
+    text-decoration: none;
+    -webkit-transition: opacity 200ms ease, color 200ms ease;
+    transition: opacity 200ms ease, color 200ms ease;
+    color: #4c5458;
+    font-size: 1vw;
+    line-height: 24px;
+    cursor: pointer;
+}
