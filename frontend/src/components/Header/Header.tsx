@@ -7,13 +7,17 @@ function Header() {
     return (
         <nav>
 
-            <Link to="/" className="main" style={{ color: '#000', textDecoration: 'none' }}>
+            <Link to="/" className="main" style={{ color: '#303030', textDecoration: 'none' }}>
                 <i><LocalHospitalIcon /></i>
                 <h1>HealthCare</h1>
 
                 <div className="menu">
-                    <Link id="first" to="/inspiration">
-                        Inspiration
+                    <Link id="first" to="/blog">
+                        Blog
+                    </Link>
+
+                    <Link  id="link" to="/pricing">
+                        Pricing
                     </Link>
 
                     <Link  id="link" to="/contact-us">

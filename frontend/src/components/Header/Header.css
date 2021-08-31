@@ -33,6 +33,7 @@ nav i{
     font-size: 1.4vw;
     max-width: 100%;
     justify-content: flex-start;
+    color: #303030;
 }
 
 nav .links{

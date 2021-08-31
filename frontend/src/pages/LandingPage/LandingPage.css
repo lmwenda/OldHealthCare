@@ -1,0 +1,100 @@
+/* Positioning and Resposive Design */
+
+div .landing___main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+div .landing___main .landing___main___content{
+    margin: auto;
+    flex: 50vw;
+    width: 10vw;
+    height: 50vh;
+    padding-left: 10vw;
+    justify-content: center;
+    align-items: center;
+}
+
+div .landing___main .landing___main___image{
+    flex: 50vw;
+    height: 50vh;
+    width: 20vw;
+}
+
+div .landing___main .landing___main___image img{
+    height: 42vh;
+}
+
+/* Pure Component Styling */
+
+div .landing___main .landing___main___content___title{
+    width: 35vw;
+    font-size: 7vh;
+    color: #303030;
+}
+
+div .landing___main .landing___main___content___description{
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    width: 25vw;
+    font-size: 2.3vh;
+    color: #000;
+}
+
+div .landing___main .landing___main___content___button{
+    white-space: normal;
+    background-color: #4084dd;
+    border: 1px solid #fff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 0.5rem;
+    color: #fff;
+    margin-right: 1vw;
+    width: 8vw;
+}
+
+div .landing___main .landing___main___content___button p{
+    font-weight: 300;
+    font-size: 2vh;
+}
+
+#talk-to-us{
+    color: #4084dd;
+    text-decoration: none;
+    font-weight: 300;
+    padding-right: 1vw;
+    font-size: 2vh;
+}
+
+.used_around_the_world{
+    max-width: 85vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10vw;
+    margin-top: 10vh;
+}
+
+.used_around_the_world___text{
+    color: #000;
+    padding-right: 10vw;
+
+    font-size: 2.5vh;
+    font-weight: 500;
+    letter-spacing: 0px;
+}
+
+.used_around_the_world__images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vh;
+    margin-right: 7vw;
+}
+
+.used_around_the_world__images img{
+    padding-right: 3vw;
+}
