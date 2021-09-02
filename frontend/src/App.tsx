@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 // Components
 
 import LandingPage from './pages/LandingPage/LandingPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
         {/* LANDING PAGE */}
 
         <Route path="/" component={LandingPage} exact />
+
+         {/* LOGIN PAGE */}
+
+         <Route path="/login" component={LoginPage} exact />
 
         {/* REGISTER PAGE */}
 

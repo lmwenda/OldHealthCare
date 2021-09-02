@@ -7,46 +7,46 @@ import { ReactTypes } from '../../global-types';
 // Components
 
 import Spinner from "../../components/Spinner/Spinner";
-import { RegisterHeader } from './Header/RegisterHeader';
+import { LoginHeader } from './Header/LoginHeader';
 
 // Styles
 
-import './RegisterPage.css';
+import './LoginPage.css';
 
-export default function RegisterPage() {
+export default function LoginPage() {
 
     const [ email, setEmail ] = React.useState<string>("");
     const [ username, setUsername ] = React.useState<string>("");
     const [ password, setPassword ] = React.useState<string>("");
     const [ loading, setLoading ] = React.useState<boolean>(false);
 
-    const Register = async(e: ReactTypes.RFE): Promise<void> => {
+    const Login = async(e: ReactTypes.RFE): Promise<void> => {
         e.preventDefault();
 
-        // Set Loading to true while you do all the Register API Logic
+        // Set Loading to true while you do all the login API Logic
         setLoading(true);
 
-        // Register the User Credientials
+        // login the User Credientials
 
         await new Promise((resolve) => setTimeout(resolve, 5000));
 
-        // Set Loading to False since you have finished all the Register API Logic
+        // Set Loading to False since you have finished all the login API Logic
         setLoading(false);
     }
 
     return (
-        <div className="registerPage" style={{ backgroundColor: '#e7f5ff' }}>
+        <div className="loginPage" style={{ backgroundColor: '#e7f5ff' }}>
             <header>
-                <RegisterHeader />
+                <LoginHeader />
             </header>
 
 
-            <section className="registerPage___body">
-                <div className="register-container">
+            <section className="loginPage___body">
+                <div className="login-container">
 
-                    <div className="register-container___header">
-                        <h2>Get HealthCare!</h2>
-                        <p>Open an account and get your HealthCare in minutes.</p>
+                    <div className="login-container___header">
+                        <h2>Login to HealthCare!</h2>
+                        <p>Login to HealthCare and receive all your perks in seconds!</p>
                     </div>
 
                     {
@@ -55,22 +55,18 @@ export default function RegisterPage() {
 
                     <br />
                 
-                    <form className="register-container___form" style={{ color: "#000" }} 
-                    onSubmit={Register}>
+                    <form className="login-container___form" style={{ color: "#000" }} 
+                    onSubmit={Login}>
                 
                         <input className="input" type="email" placeholder="Email:" onChange={
                             (e: ReactTypes.RCE) => setEmail(e.target.value)
-                        } />
-
-                        <input className="input" type="text" placeholder="Username:" onChange={
-                            (e: ReactTypes.RCE) => setUsername(e.target.value)
                         } />
                         
                         <input className="input" type="password" placeholder="Password:" onChange={
                             (e: ReactTypes.RCE) => setPassword(e.target.value)
                         } />
 
-                        <button className="register_button">Get Started</button>
+                        <button className="login_button">Login to HealthCare</button>
 
                         <p>
                             By clicking the button above, you agree to our 
