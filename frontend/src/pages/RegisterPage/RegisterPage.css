@@ -1,0 +1,84 @@
+.registerPage{
+    height: 100vh;
+}
+
+.registerPage___body{
+    margin-top: 100px;
+    color: #000;
+    background: #fff;
+    margin-left: 650px;
+    justify-content: center;
+    box-shadow: 0 4px 32px 0 rgb(0 0 0 / 6%);
+    border-radius: 10px;
+    height: 55vh;
+    width: 30vw;
+    text-align: center;
+}
+
+.registerPage .register-container .register-container___header{
+    padding-top: 7vh;
+}
+
+.registerPage .register-container .register-container___header h2{
+    margin-bottom: 12px;
+    font-size: 40px;
+    line-height: 1.4em;
+    color: #252525;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+.registerPage .register-container .register-container___header p{
+    line-height: 1.6em;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.registerPage___body .register-container .register-container___form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 25vw;
+    margin-left: 2.5vw;
+}
+
+.registerPage .registerPage___body .register-container .register-container___form .register_button{
+    margin-bottom: 16px;
+    padding: 7px 32px;
+    flex: 0 0 auto;
+    border-style: none;
+    border-radius: 6px;
+    background-color: #4084dd;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 8%);
+    transition: color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1.7;
+    font-weight: 500;
+    text-align: center;
+}
+
+.registerPage .registerPage___body .register-container .register-container___form p{
+    opacity: 0.75;
+    font-size: 14px;
+}
+
+.registerPage___body .register-container .register-container___form input{
+    margin-bottom: 16px;
+    padding: 13px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #edf0f3;
+    border-radius: 6px;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 1%);
+    font-size: 15px;
+    line-height: 1.4px;
+}
+
+.registerPage___body .register-container .register-container___form input::placeholder{
+    color: #cccccc;
+}
+
+.registerPage___body .register-container .register-container___form .input:focus-within{
+    border: 1px solid #4084dd;
+}

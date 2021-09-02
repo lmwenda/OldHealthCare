@@ -1,0 +1,57 @@
+.registerHeader{
+    background-color: #e7f5ff;
+    padding: 3vh;
+    display: flex;
+    align-items: center;
+}
+
+.registerHeader .registerHeader___title{
+    flex: 50vw;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+}
+
+.registerHeader .registerHeader___title .registerHeader___title___content{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.registerHeader .registerHeader___title .registerHeader___title___content i{
+    color: #4084dd;
+}
+
+.registerHeader .registerHeader___title .registerHeader___title___content h1{
+    color: #303030;
+}
+
+.registerHeader___link .registerHeader___link___button{
+    padding: 1vh;
+    height: 4vh;
+    width: 5vw;
+    border: 1px solid #4084dd;
+    color: #4084dd;
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+}
+
+.p{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.registerHeader___link .registerHeader___link___p{
+    padding-right: 1vw;
+    color: grey;
+    font-size: 1.5vh;
+}
+
+
+
+.registerHeader .registerHeader___link{
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+}

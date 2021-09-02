@@ -4,14 +4,26 @@ import Header from './components/Header/Header';
 
 // Components
 
-import { LandingPage } from './pages/LandingPage/LandingPage';
+import LandingPage from './pages/LandingPage/LandingPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
+
+        {/* LANDING PAGE */}
+
         <Route path="/" component={LandingPage} exact />
+
+        {/* REGISTER PAGE */}
+
+        <Route path="/register" component={RegisterPage} exact />
+
+        {/* BLOG PAGE */}
+
         <Route path="/blog" render={() => (<div><Header /><h1>Blog Posts</h1></div>)} exact />
+
       </Switch>
     </BrowserRouter>
   );
