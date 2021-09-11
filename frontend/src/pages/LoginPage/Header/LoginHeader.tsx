@@ -16,9 +16,9 @@ export function LoginHeader() {
 
 
             <div className="loginHeader___link">
-                <p className="loginHeader___link___p">Already have an account?</p>
-                <Link to="/login">
-                    <button className="loginHeader___link___button"><p className="p">Log In</p></button>
+                <p className="loginHeader___link___p">Don't have an account?</p>
+                <Link to="/register">
+                    <button className="loginHeader___link___button"><p className="p">Register</p></button>
                 </Link>
             </div>
         </div>

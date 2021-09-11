@@ -20,7 +20,7 @@ function Header() {
                         Pricing
                     </Link>
 
-                    <Link  id="link" to="/contact-us">
+                    <Link  id="link" to="/contact">
                         Contact
                     </Link>
                 </div>

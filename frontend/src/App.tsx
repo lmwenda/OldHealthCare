@@ -5,8 +5,11 @@ import Header from './components/Header/Header';
 // Components
 
 import LandingPage from './pages/LandingPage/LandingPage';
-import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import ContactPage from "./pages/ContactPage/ContactPage";
+import PricingPage from './pages/PricingPage/PricingPage';
+
 
 function App() {
   return (
@@ -17,9 +20,17 @@ function App() {
 
         <Route path="/" component={LandingPage} exact />
 
-         {/* LOGIN PAGE */}
+        {/* CONTACT PAGE */}
 
-         <Route path="/login" component={LoginPage} exact />
+        <Route path="/contact" component={ContactPage} exact />
+
+         {/* PRICING PAGE */}
+
+         <Route path="/pricing" component={PricingPage} exact />
+
+        {/* LOGIN PAGE */}
+
+        <Route path="/login" component={LoginPage} exact />
 
         {/* REGISTER PAGE */}
 
