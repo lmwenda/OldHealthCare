@@ -45,7 +45,7 @@ export default function LoginPage() {
                 <div className="login-container">
 
                     <div className="login-container___header">
-                        <h2>Login to HealthCare!</h2>
+                        <h2>Login</h2>
                         <p>Login to HealthCare and receive all your perks in seconds!</p>
                     </div>
 
