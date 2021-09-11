@@ -8,7 +8,7 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import ContactPage from "./pages/ContactPage/ContactPage";
-import PricingPage from './pages/PricingPage/PricingPage';
+import SubscriptionPage from './pages/SubscriptionPage/SubscriptionPage';
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
 
          {/* PRICING PAGE */}
 
-         <Route path="/pricing" component={PricingPage} exact />
+         <Route path="/pricing" component={SubscriptionPage} exact />
 
         {/* LOGIN PAGE */}
 

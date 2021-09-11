@@ -1,0 +1,152 @@
+.phone-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 3px;
+  }
+  .phone-container .phone-card-1 {
+    border: 1px solid grey;
+    border-radius: 4px;
+    color: #000;
+    margin-bottom: 10px;
+    width: 300px;
+  }
+  .phone-container .phone-card-1 #liner {
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background: grey;
+    height: 10px;
+    width: 100%;
+  }
+  .phone-container .phone-card-1 #phone-plan-button {
+    border: 1px solid grey;
+    background: #fff;
+    margin-top: 100%;
+    border-radius: 3px;
+    margin-bottom: 50px;
+    width: 80%;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .phone-container .phone-card-2 {
+    border: 1px solid grey;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    color: #000;
+    margin-bottom: 10px;
+    width: 300px;
+  }
+  .phone-container .phone-card-2 #phone-plan-button {
+    border: 1px solid green;
+    background: green;
+    color: #fff;
+    margin-top: 100%;
+    border-radius: 3px;
+    margin-bottom: 50px;
+    width: 80%;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .phone-container .phone-card-2 #liner {
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background: green;
+    height: 10px;
+    width: 100%;
+    margin-top: 0;
+  }
+  .phone-container .phone-card-3 {
+    border: 1px solid grey;
+    border-radius: 4px;
+    color: #000;
+    margin-bottom: 10px;
+    width: 300px;
+  }
+  .phone-container .phone-card-3 #phone-plan-button {
+    border: 1px solid black;
+    background: black;
+    color: #fff;
+    margin-top: 100%;
+    border-radius: 3px;
+    margin-bottom: 50px;
+    width: 80%;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .phone-container .phone-card-3 #liner {
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background: black;
+    height: 10px;
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    color: #000;
+    height: 500px;
+    width: 280%;
+  }
+  .container .card-1 {
+    border: 1px solid grey;
+    color: #000;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 20vw;
+  }
+  .container .card-1 #plan-button {
+    border: 1px solid grey;
+    background: #fff;
+    margin-top: 100%;
+    border-radius: 3px;
+    width: 80%;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .container .card-1 #liner {
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background: grey;
+    height: 10px;
+    width: 100%;
+  }
+
+  .container .card-3 {
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 21vw;
+  }
+  .container .card-3 #plan-button {
+    border: 1px solid grey;
+    background: #000;
+    color: #fff;
+    margin-top: 39.3vh;
+    border-radius: 3px;
+    width: 80%;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .container .card-3 #liner {
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background: black;
+    height: 10px;
+    width: 100%;
+  }
