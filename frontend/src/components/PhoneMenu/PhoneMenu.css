@@ -1,0 +1,8 @@
+.phoneMenu{
+    color: #000;
+    height: 100vh;
+    width: 100vw;
+
+    position: relative;
+    margin-top: 10vh;
+}

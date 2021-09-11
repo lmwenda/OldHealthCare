@@ -1,9 +1,10 @@
 import React from 'react';
+import jwt from "jsonwebtoken";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Header from './components/Header/Header';
 
 // Components
 
+import Header from './components/Header/Header';
 import LandingPage from './pages/LandingPage/LandingPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -12,6 +13,24 @@ import SubscriptionPage from './pages/SubscriptionPage/SubscriptionPage';
 
 
 function App() {
+
+  // Getting JWT Tokens and User ID
+
+  const token: any = localStorage.getItem("token");
+  const _id: any = jwt.decode(token);
+
+  // Expired Tokens
+
+  React.useEffect(() => {
+    if(token){
+      if(_id.exp < Date.now() / 1000){
+        localStorage.removeItem("token");
+      }else{
+        return;
+      }
+    }
+  });
+
   return (
     <BrowserRouter>
       <Switch>
