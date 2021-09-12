@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import express, { Application, Request, Response } from 'express';
 import SessionRoutes from "./routes/SessionRoutes";
+import UserRoutes from "./routes/UserRoutes";
 
 // Configurations
 
@@ -22,6 +23,7 @@ const app: Application = express();
 
 app.use(express.json());
 app.use("/api/sessions",  SessionRoutes);
+app.use("/api/users", UserRoutes);
 
 // Server Listening
 

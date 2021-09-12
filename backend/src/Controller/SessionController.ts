@@ -1,5 +1,5 @@
 import Session from "../models/Session";
-import { CallbackError, Error } from "mongoose";
+import { Error } from "mongoose";
 import { Response } from "express";
 import { SessionClass } from "../utils/classes/SessionClass";
 import AuthenticateSession from "../authentication/AuthenticateSession";
