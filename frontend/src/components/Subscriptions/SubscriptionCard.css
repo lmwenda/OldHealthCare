@@ -3,14 +3,20 @@
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 3px;
   }
-  .phone-container .phone-card-1 {
+
+.highlighter{
+  background-color: #4084dd;
+  height: 10vh;
+}
+
+  .phone-container .phone-card {
     border: 1px solid grey;
-    border-radius: 4px;
     color: #000;
-    margin-bottom: 10px;
-    width: 300px;
+    border-radius: 3rem;
+    margin-right: 10px;
+    width: 20vw;
   }
-  .phone-container .phone-card-1 #liner {
+  .phone-container .phone-card #liner {
     color: #fff;
     border-radius: 3px;
     margin-top: 0;
@@ -20,7 +26,7 @@
     height: 10px;
     width: 100%;
   }
-  .phone-container .phone-card-1 #phone-plan-button {
+  .phone-container .phone-card #phone-plan-button {
     border: 1px solid grey;
     background: #fff;
     margin-top: 100%;
@@ -62,10 +68,10 @@
   }
   .phone-container .phone-card-3 {
     border: 1px solid grey;
-    border-radius: 4px;
     color: #000;
-    margin-bottom: 10px;
-    width: 300px;
+    border-radius: 3rem;
+    margin-right: 10px;
+    width: 20vw;
   }
   .phone-container .phone-card-3 #phone-plan-button {
     border: 1px solid black;
@@ -98,55 +104,66 @@
     height: 500px;
     width: 280%;
   }
-  .container .card-1 {
-    border: 1px solid grey;
+  .container .card {
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     color: #000;
-    border-radius: 4px;
+    border-radius: 3rem;
     margin-right: 10px;
     width: 20vw;
   }
-  .container .card-1 #plan-button {
-    border: 1px solid grey;
-    background: #fff;
-    margin-top: 100%;
-    border-radius: 3px;
-    width: 80%;
-    cursor: pointer;
-    padding: 10px;
-  }
-  .container .card-1 #liner {
-    color: #fff;
-    border-radius: 3px;
-    margin-top: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    background: grey;
-    height: 10px;
-    width: 100%;
-  }
 
-  .container .card-3 {
-    border: 1px solid grey;
-    border-radius: 4px;
-    width: 21vw;
-  }
-  .container .card-3 #plan-button {
-    border: 1px solid grey;
-    background: #000;
-    color: #fff;
-    margin-top: 39.3vh;
-    border-radius: 3px;
-    width: 80%;
+.card___content{
+  padding-top: 4vh;
+}
+
+.card___content p{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 1vw;
+  color: #303030;
+}
+
+.card #pricing button{
+    white-space: normal;
+    background-color: #4084dd;
+    border: 1px solid #fff;
     cursor: pointer;
+    width: 15vw;
     padding: 10px;
-  }
-  .container .card-3 #liner {
+    border-radius: 0.5rem;
     color: #fff;
-    border-radius: 3px;
-    margin-top: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    background: black;
-    height: 10px;
-    width: 100%;
-  }
+    margin-top: 15vh;
+}
+
+#tick{
+  color: #4084dd;
+}
+
+.card #free-pricing button{
+  white-space: normal;
+  background-color: #4084dd;
+  border: 1px solid #fff;
+  cursor: pointer;
+  width: 15vw;
+  padding: 10px;
+  border-radius: 0.5rem;
+  color: #fff;
+  margin-top: 22vh;
+}
+
+.card #free-pricing button p{
+  font-size: 1vw;
+  font-weight: 300;
+}
+
+.card #pricing button p{
+    font-size: 1vw;
+    font-weight: 300;
+}
+
+#title{
+  padding-top: 5vh;
+}
