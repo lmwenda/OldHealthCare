@@ -17,25 +17,47 @@ router.get(session_endpoints.GET_SESSION, (req: Request, res: Response) => {
 })
 
 router.post(session_endpoints.POST_SESSION, (req: Request, res: Response) => {
-    const { sessionName, sessionDescription, timeTaken,  typeOfWorkout, sets, reps, isPublic } = req.body;
+    // Request.Body
+
+    const { 
+        user_id,
+        sessionName, sessionDescription, timeTaken, 
+        author, typeOfWorkout, sets, reps, isPublic 
+    } = req.body;
+
+    // Setting a new Session and User Controller
+
     const session = new SessionController(
         sessionName, 
         sessionDescription, 
         timeTaken, 
+        author,
         typeOfWorkout,
         sets, 
         reps, 
         isPublic
     );
 
+    // Calling Session and User Controller Functions
+
     session.createSession(res);
+
+    // Pushing the Session onto the User Session Field
+                                                      
+    session.pushSessionsToUser(user_id, res);
+})
+
+router.get(session_endpoints.GET_ALL_USER_SESSIONS, (req: Request, res: Response) => {
+    const session = new SessionController();
+    session.getAllUserSessions(req.body.user_id, res);
 })
 
 router.put(session_endpoints.UPDATE_SESSION, (req: Request, res: Response) => {
     const { 
         sessionName, 
         sessionDescription, 
-        timeTaken,  
+        timeTaken, 
+        author, 
         typeOfWorkout, 
         sets, 
         reps, 
@@ -46,6 +68,7 @@ router.put(session_endpoints.UPDATE_SESSION, (req: Request, res: Response) => {
         sessionName, 
         sessionDescription, 
         timeTaken, 
+        author,
         typeOfWorkout,
         sets, 
         reps, 

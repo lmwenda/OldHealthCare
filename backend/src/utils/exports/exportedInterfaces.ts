@@ -4,6 +4,7 @@ export interface ISession extends mongoose.Document{
     sessionName: string,
     sessionDescription: string,
     timeTaken: string,
+    author: mongoose.Schema.Types.ObjectId,
     typeOfWorkout: string,
     sets?: number,
     reps?: number,

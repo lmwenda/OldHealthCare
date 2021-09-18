@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { ISession } from "../utils/exports/exportedInterfaces";
+import User from "./User";
 
 const SessionSchema = new mongoose.Schema({
     // Main Details
@@ -8,6 +9,9 @@ const SessionSchema = new mongoose.Schema({
     sessionDescription: { type: String },
     timeTaken: { type: String, default: "0.00s" },
 
+    // Author
+
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "Session Author" },
 
     // Workout Details 
 

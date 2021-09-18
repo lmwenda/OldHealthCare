@@ -1,22 +1,55 @@
 import Session from "../models/Session";
-import { Error } from "mongoose";
+import mongoose, { Error } from "mongoose";
 import { Response } from "express";
 import { SessionClass } from "../utils/classes/SessionClass";
 import AuthenticateSession from "../authentication/AuthenticateSession";
 import { ISession } from "../utils/exports/exportedInterfaces";
+import User from "../models/User";
+import AuthenticateUser from "../authentication/AuthenticateUser";
 
 export class SessionController extends SessionClass{
     constructor(
         sessionName?: string, 
         sessionDescription?: string, 
         timeTaken?: string, 
+        author?: mongoose.Schema.Types.ObjectId,
         typeOfWorkout?: string,
         sets?: number | undefined, 
         reps?: number | undefined, 
         isPublic?: boolean, 
         date?: Date,
     ){
-        super(sessionName, sessionDescription, timeTaken, typeOfWorkout, reps, sets, isPublic, date);
+        super(sessionName, sessionDescription, timeTaken, author, typeOfWorkout, reps, sets, isPublic, date);
+    }
+
+    public async pushSessionsToUser(user_id: any, res: Response): Promise<any>{
+        try{
+
+            let _sessions;
+
+            await Session.find({ "author": user_id }, function(err: any, result: any) {
+                if (err) {
+                  console.log(err);
+                  res.status(400).send(err);
+                } else {
+                    _sessions = result;
+                    res.json(_sessions);
+                }
+            });
+
+            // UPDATING THE USER
+
+            await User.findByIdAndUpdate(user_id, { sessions: _sessions }, function(err){
+                if(err){
+                    res.status(400).send("Failed to Push Session to User...")
+                } else {
+                    res.status(200).send("Successfully Pushed Session to User...");
+                }
+            })
+        }catch(err){
+            console.log(err);
+            res.status(400).send(err);
+        }
     }
 
     public async createSession(res: Response): Promise<any>{
@@ -25,6 +58,7 @@ export class SessionController extends SessionClass{
             sessionName: this.sessionName,
             sessionDescription: this.sessionDescription,
             timeTaken: this.timeTaken,
+            author: this.author,
             typeOfWorkout: this.typeOfWorkout,
             sets: this.sets,
             reps: this.reps,
@@ -77,6 +111,17 @@ export class SessionController extends SessionClass{
                 res.status(200).send("Successfully Deleted Session...");
             }
          });
+    }
+
+    public async getAllUserSessions(user_id: mongoose.Schema.Types.ObjectId, res: Response): Promise<any>{
+        await Session.find({ "author": user_id }, function(err: any, result: any) {
+            if (err) {
+              console.log(err);
+              res.status(400).send(err);
+            } else {
+                res.json(result);
+            }
+        });
     }
 
     public async updateSession(id: string, res: Response): Promise<any>{

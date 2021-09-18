@@ -1,5 +1,5 @@
 import User from "../models/User";
-import { Error } from "mongoose";
+import mongoose, { Error } from "mongoose";
 import { Response } from "express";
 import { UserClass } from "../utils/classes/UserClass";
 import AuthenticateUser from "../authentication/AuthenticateUser";

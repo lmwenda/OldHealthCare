@@ -112,11 +112,11 @@
     width: 20vw;
   }
 
-.card___content{
+.container .card .card___content{
   padding-top: 4vh;
 }
 
-.card___content p{
+.container .card .card___content p{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -126,7 +126,7 @@
   color: #303030;
 }
 
-.card #pricing button{
+.container .card #pricing button{
     white-space: normal;
     background-color: #4084dd;
     border: 1px solid #fff;
@@ -142,7 +142,7 @@
   color: #4084dd;
 }
 
-.card #free-pricing button{
+.container .card #free-pricing button{
   white-space: normal;
   background-color: #4084dd;
   border: 1px solid #fff;
@@ -154,12 +154,12 @@
   margin-top: 22vh;
 }
 
-.card #free-pricing button p{
+.container .card #free-pricing button p{
   font-size: 1vw;
   font-weight: 300;
 }
 
-.card #pricing button p{
+.container .card #pricing button p{
     font-size: 1vw;
     font-weight: 300;
 }
