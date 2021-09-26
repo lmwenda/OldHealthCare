@@ -83,15 +83,6 @@ export class Sessions implements ISessions{
         })
     }
 
-    public async getAllUserSessions(user_id: mongoose.Types.ObjectId): Promise<AxiosResponse>{
-        const data = { user_id }
-        return await request(BASE_URL, {
-            url: session_endpoints.GET_ALL_USER_SESSIONS,
-            method: "GET",
-            data
-        })
-    }
-
     public async getAllSessions(): Promise<AxiosResponse>{
         return await request(BASE_URL, {
             url: session_endpoints.GET_ALL_SESSIONS,

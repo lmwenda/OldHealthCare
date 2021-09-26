@@ -17,5 +17,4 @@ export interface IUser{
     email?: string,
     password?: string,
     sessions?: [],
-    date?: Date
 }
