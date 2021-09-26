@@ -1,4 +1,11 @@
+// Constant Endpoints
+
+import { AxiosResponse } from "axios";
+import request from "./request";
+
 const BASE_URL = "http://localhost:5000/api";
+
+// Enum Endpoints
 
 enum session_endpoints {
     GET_SESSION = "/sessions/session/:session_id", // SESSION_ID REQUIRED
@@ -18,4 +25,10 @@ enum user_endpoints {
     LOGIN_USER = "/users/login"
 }
 
-export { session_endpoints, user_endpoints, BASE_URL };
+// Export Endpoints
+
+export { 
+    session_endpoints,
+    user_endpoints,
+    BASE_URL
+};

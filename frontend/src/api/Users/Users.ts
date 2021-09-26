@@ -4,28 +4,19 @@ import { IUser } from "../../utils/Exported/ExportedInterfaces";
 import { BASE_URL, user_endpoints } from "../urls";
 import mongoose from "mongoose";
 
-/*
-    REGISTER - DONE
-    GET ALL USER SESSIONS - DOEN
-    LOGIN - DONE
-*/
-
 export class UserClass implements IUser{
     public username?: string;
     public email?: string;
     public password?: string;
-    public sessions?: [];
 
     constructor(
         username?: string,
         email?: string,
-        password?: string,
-        sessions?: [],
+        password?: string
     ){
         this.username = username;
         this.email = email;
         this.password = password;
-        this.sessions = sessions;
     }
 
     public async getAllUserSessions(user_id: mongoose.Types.ObjectId): Promise<AxiosResponse>{
