@@ -1,8 +1,5 @@
 // Constant Endpoints
 
-import { AxiosResponse } from "axios";
-import request from "./request";
-
 const BASE_URL = "http://localhost:5000/api";
 
 // Enum Endpoints

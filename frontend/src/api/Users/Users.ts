@@ -1,8 +1,11 @@
-import { AxiosResponse } from "axios";
+import { AxiosResponse, AxiosError } from "axios";
 import request from "../request";
 import { IUser } from "../../utils/Exported/ExportedInterfaces";
 import { BASE_URL, user_endpoints } from "../urls";
+import { authEnum } from "../../utils/redux-utils/authEnum";
 import mongoose from "mongoose";
+import { loginDispatchType, registerDispatchType } from "../../utils/types";
+import { Dispatch } from "redux";
 
 export class UserClass implements IUser{
     public username?: string;
@@ -63,9 +66,8 @@ export class UserClass implements IUser{
         });
     }
 
-    public loginUser(){
+    public loginUser(dispatch: Dispatch<{ type: loginDispatchType, payload?: { user: any }}>){
         const data = {
-            username: this.username,
             email: this.email,
             password: this.password
         }
@@ -74,10 +76,50 @@ export class UserClass implements IUser{
             url: user_endpoints.LOGIN_USER,
             method: "POST",
             data
-        });
+        }).then(
+
+            (response: AxiosResponse) => {
+                try{
+                    console.log("Login Response:", response);
+                    localStorage.setItem("token", response.data.user.jsonwebtoken);
+
+                    dispatch({
+                        type: authEnum.LOGIN_SUCCESS,
+                        payload: { user: response.data },
+                    });
+
+                    dispatch({
+                        type: authEnum.SET_MESSAGE,
+                        payload: response.data.message
+                    });
+                }catch(err){
+                    console.error(err);
+                }
+
+            },
+            (error: AxiosError) => {
+
+                const message =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+
+                dispatch({
+                    type: authEnum.LOGIN_FAIL,
+                });
+
+                dispatch({
+                    type: authEnum.SET_MESSAGE,
+                    payload: message,
+                });
+
+            }
+        );
     }
 
-    public registerUser(){
+    public registerUser(dispatch: Dispatch<{ type: registerDispatchType, payload?: {}|string }>){
         const data = {
             username: this.username,
             email: this.email,
@@ -88,6 +130,40 @@ export class UserClass implements IUser{
             url: user_endpoints.POST_USER,
             method: "POST",
             data
-        });
+        }).then((response: AxiosResponse) => {
+            try{
+
+                console.log(response.data);
+                dispatch({
+                    type: authEnum.REGISTER_SUCCESS,
+                });
+
+                dispatch({
+                    type: authEnum.SET_MESSAGE,
+                    payload: response.data.message,
+                });
+            }catch(err){
+                console.error(err);
+            }
+            },
+            (error: AxiosError) => {
+
+                const message =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+
+                dispatch({
+                    type: authEnum.REGISTER_FAIL,
+                });
+
+                dispatch({
+                    type: authEnum.SET_MESSAGE,
+                    payload: message,
+                });
+            }
+        );
     }
 }

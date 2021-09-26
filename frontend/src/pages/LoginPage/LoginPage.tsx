@@ -12,23 +12,22 @@ import { LoginHeader } from './Header/LoginHeader';
 // Styles
 
 import './LoginPage.css';
+import { login } from '../../redux/actions';
 
 export default function LoginPage() {
 
     const [ email, setEmail ] = React.useState<string>("");
-    const [ username, setUsername ] = React.useState<string>("");
     const [ password, setPassword ] = React.useState<string>("");
     const [ loading, setLoading ] = React.useState<boolean>(false);
 
-    const Login = async(e: ReactTypes.RFE): Promise<void> => {
+    const submitForm = async(e: ReactTypes.RFE): Promise<any> => {
         e.preventDefault();
 
         // Set Loading to true while you do all the login API Logic
         setLoading(true);
 
         // login the User Credientials
-
-        await new Promise((resolve) => setTimeout(resolve, 5000));
+        login("", email, password);
 
         // Set Loading to False since you have finished all the login API Logic
         setLoading(false);
@@ -56,7 +55,7 @@ export default function LoginPage() {
                     <br />
                 
                     <form className="login-container___form" style={{ color: "#000" }} 
-                    onSubmit={Login}>
+                    onSubmit={submitForm}>
                 
                         <input className="input" type="email" placeholder="Email:" onChange={
                             (e: ReactTypes.RCE) => setEmail(e.target.value)
@@ -66,7 +65,7 @@ export default function LoginPage() {
                             (e: ReactTypes.RCE) => setPassword(e.target.value)
                         } />
 
-                        <button className="login_button">Login to HealthCare</button>
+                        <button className="login_button" onClick={submitForm}>Login to HealthCare</button>
 
                         <p>
                             By clicking the button above, you agree to our 

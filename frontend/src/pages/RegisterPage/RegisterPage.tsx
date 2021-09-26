@@ -12,6 +12,7 @@ import { RegisterHeader } from './Header/RegisterHeader';
 // Styles
 
 import './RegisterPage.css';
+import { register } from '../../redux/actions';
 
 export default function RegisterPage() {
 
@@ -20,15 +21,16 @@ export default function RegisterPage() {
     const [ password, setPassword ] = React.useState<string>("");
     const [ loading, setLoading ] = React.useState<boolean>(false);
 
-    const Register = async(e: ReactTypes.RFE): Promise<void> => {
+    const submitForm = async(e: ReactTypes.RFE): Promise<any> => {
         e.preventDefault();
 
         // Set Loading to true while you do all the Register API Logic
         setLoading(true);
 
         // Register the User Credientials
+        // await new Promise((resolve) => setTimeout(resolve, 5000));
 
-        await new Promise((resolve) => setTimeout(resolve, 5000));
+        await register(username, email, password);
 
         // Set Loading to False since you have finished all the Register API Logic
         setLoading(false);
@@ -56,7 +58,7 @@ export default function RegisterPage() {
                     <br />
                 
                     <form className="register-container___form" style={{ color: "#000" }} 
-                    onSubmit={Register}>
+                    onSubmit={submitForm}>
                 
                         <input className="input" type="email" placeholder="Email:" onChange={
                             (e: ReactTypes.RCE) => setEmail(e.target.value)
@@ -70,7 +72,7 @@ export default function RegisterPage() {
                             (e: ReactTypes.RCE) => setPassword(e.target.value)
                         } />
 
-                        <button className="register_button">Get Started</button>
+                        <button className="register_button" onClick={submitForm}>Get Started</button>
 
                         <p>
                             By clicking the button above, you agree to our 
