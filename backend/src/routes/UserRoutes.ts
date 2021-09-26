@@ -30,6 +30,17 @@ router.post(user_endpoints.POST_USER, (req: Request, res: Response) => {
     );
 
     user.createUser(res);
+});
+
+router.post(user_endpoints.LOGIN_USER, (req: Request, res: Response) => {
+    const { username, email, password } = req.body;
+    const user = new UserController(
+        username,
+        email,
+        password
+    );
+
+    user.loginUser(res);
 })
 
 router.put(user_endpoints.UPDATE_USER, (req: Request, res: Response) => {

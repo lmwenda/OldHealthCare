@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
+import cors from "cors";
 import mongoose from "mongoose";
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
 import SessionRoutes from "./routes/SessionRoutes";
 import UserRoutes from "./routes/UserRoutes";
 
@@ -21,6 +22,11 @@ const app: Application = express();
 
 // Routes and Middlewares
 
+app.use(
+  cors({
+    exposedHeaders: "verification-token",
+  })
+);
 app.use(express.json());
 app.use("/api/sessions",  SessionRoutes);
 app.use("/api/users", UserRoutes);
