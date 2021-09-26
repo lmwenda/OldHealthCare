@@ -5,6 +5,7 @@ export function AuthenticateSession(body: any){
         sessionName: Joi.string().required(), 
         sessionDescription: Joi.string().required(), 
         timeTaken: Joi.string().required(), 
+        author: Joi.string(),
         typeOfWorkout: Joi.string().required(),
         sets: Joi.number(), 
         reps: Joi.number(), 

@@ -9,10 +9,6 @@ const UserSchema = new mongoose.Schema({
     email: { type: String },
     password: { type: String, min: 6 },
 
-    // Sessions
-
-    sessions: { type: [] },
-
     // Date Field
     date: {
         type: Date,

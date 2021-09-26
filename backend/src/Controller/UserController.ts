@@ -4,6 +4,7 @@ import { Response } from "express";
 import { UserClass } from "../utils/classes/UserClass";
 import AuthenticateUser from "../authentication/AuthenticateUser";
 import { IUser } from "../utils/exports/exportedInterfaces";
+import Session from "../models/Session";
 
 export class UserController extends UserClass{
     constructor(
@@ -13,7 +14,7 @@ export class UserController extends UserClass{
         sessions?: [],
         date?: Date
     ){
-        super(username, email, password, sessions, date);
+        super(username, email, password, date);
     }
 
     public async createUser(res: Response): Promise<any>{
@@ -42,6 +43,21 @@ export class UserController extends UserClass{
         res.json(savedUser);
     }
 
+    public async getAllUserSessions(res: Response, author: any){
+        try{
+            await Session.find({ author: author }, (err, result) => {
+                if(err){
+                    console.log(err);
+                    res.status(400).send(err);
+                }else {
+                    res.json(result);
+                }
+            });
+        }catch(err){
+            console.log(err);
+        }
+    }
+
     public getAllUsers(res: Response): any{
         User.find({}, function(err: any, result: any) {
             if (err) {
@@ -54,11 +70,11 @@ export class UserController extends UserClass{
     }
 
     public getUser(id: string, res: Response):  void{
-        User.findById(id, (err: Error, User: IUser) => {
-            if (!err) {
-              res.json(User);
+        User.findById(id, (err: Error, user: IUser) => {
+            if (err) {
+                res.json({ message: "Failed to Retrieve User." });
             } else {
-              res.json({ message: "Failed to Retrieve User." });
+                res.json(user);
             }
           });
     }

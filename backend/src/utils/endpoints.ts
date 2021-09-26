@@ -4,7 +4,6 @@ enum session_endpoints {
     UPDATE_SESSION = "/update/session/:session_id", // SESSION_ID REQUIRED
     DELETE_SESSION = "/delete/session/:session_id", // SESSION_ID REQUIRED
     GET_ALL_SESSIONS = "/get/all",
-    GET_ALL_USER_SESSIONS = "/user/get/all"
 }
 
 enum user_endpoints {
@@ -13,6 +12,7 @@ enum user_endpoints {
     UPDATE_USER = "/update/user/:user_id", // USER_ID REQUIRED
     DELETE_USER = "/delete/user/:user_id", // USER_ID REQUIRED
     GET_ALL_USERS = "/get/all",
+    GET_ALL_USER_SESSIONS = "/sessions/get/all"
 }
 
 export { session_endpoints, user_endpoints };

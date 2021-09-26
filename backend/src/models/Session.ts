@@ -11,7 +11,7 @@ const SessionSchema = new mongoose.Schema({
 
     // Author
 
-    author: { type: mongoose.Schema.Types.ObjectId, ref: "Session Author" },
+    author: { type: mongoose.Schema.Types.ObjectId },
 
     // Workout Details 
 

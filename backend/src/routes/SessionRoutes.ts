@@ -41,15 +41,6 @@ router.post(session_endpoints.POST_SESSION, (req: Request, res: Response) => {
     // Calling Session and User Controller Functions
 
     session.createSession(res);
-
-    // Pushing the Session onto the User Session Field
-                                                      
-    session.pushSessionsToUser(user_id, res);
-})
-
-router.get(session_endpoints.GET_ALL_USER_SESSIONS, (req: Request, res: Response) => {
-    const session = new SessionController();
-    session.getAllUserSessions(req.body.user_id, res);
 })
 
 router.put(session_endpoints.UPDATE_SESSION, (req: Request, res: Response) => {

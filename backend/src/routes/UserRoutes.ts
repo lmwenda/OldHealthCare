@@ -16,6 +16,11 @@ router.get(user_endpoints.GET_USER, (req: Request, res: Response) => {
     user.getUser(req.params.user_id, res);
 })
 
+router.get(user_endpoints.GET_ALL_USER_SESSIONS, (req: Request, res: Response) => {
+    const user = new UserController();
+    user.getAllUserSessions(res, req.body.author);
+})
+
 router.post(user_endpoints.POST_USER, (req: Request, res: Response) => {
     const { username, email, password } = req.body;
     const user = new UserController(

@@ -22,64 +22,67 @@ export class SessionController extends SessionClass{
         super(sessionName, sessionDescription, timeTaken, author, typeOfWorkout, reps, sets, isPublic, date);
     }
 
-    public async pushSessionsToUser(user_id: any, res: Response): Promise<any>{
-        try{
+    // public async pushSessionsToUser(user_id: any, res: Response): Promise<any>{
+    //     try{
+    //         await Session.find({ "author": user_id }, function(err: any, result: any) {
+    //             if (err) {
+    //               console.log(err);
+    //               res.status(400).send(err);
+    //             } else {
 
-            let _sessions;
+    //                 try{
+    //                     // UPDATING THE USER
 
-            await Session.find({ "author": user_id }, function(err: any, result: any) {
-                if (err) {
-                  console.log(err);
-                  res.status(400).send(err);
-                } else {
-                    _sessions = result;
-                    res.json(_sessions);
-                }
-            });
-
-            // UPDATING THE USER
-
-            await User.findByIdAndUpdate(user_id, { sessions: _sessions }, function(err){
-                if(err){
-                    res.status(400).send("Failed to Push Session to User...")
-                } else {
-                    res.status(200).send("Successfully Pushed Session to User...");
-                }
-            })
-        }catch(err){
-            console.log(err);
-            res.status(400).send(err);
-        }
-    }
+    //                     User.findByIdAndUpdate(user_id, { sessions: result }, function(err){
+    //                         if(err){
+    //                             res.status(400).send("Failed to Push Session to User...")
+    //                         } else {
+    //                             res.status(200).send("Successfully Pushed Session to User...");
+    //                         }
+    //                     })
+    //                 }
+    //                 catch(err){
+    //                     console.error(err);
+    //                 }
+    //             }
+    //         });
+    //     }catch(err){
+    //         console.log(err);
+    //         res.status(400).send(err);
+    //     }
+    // }
 
     public async createSession(res: Response): Promise<any>{
-
-        const body = {
-            sessionName: this.sessionName,
-            sessionDescription: this.sessionDescription,
-            timeTaken: this.timeTaken,
-            author: this.author,
-            typeOfWorkout: this.typeOfWorkout,
-            sets: this.sets,
-            reps: this.reps,
-            isPublic: this.isPublic
+        try{
+            const body = {
+                sessionName: this.sessionName,
+                sessionDescription: this.sessionDescription,
+                timeTaken: this.timeTaken,
+                author: this.author,
+                typeOfWorkout: this.typeOfWorkout,
+                sets: this.sets,
+                reps: this.reps,
+                isPublic: this.isPublic
+            }
+    
+            // VALIDATING OUR SESSION
+            const { error } = AuthenticateSession(body);
+            if (error) return res.status(400).send(error.details[0].message);
+    
+            // CHECKING IF OUR SESSION EXISTS
+            const sessionNameExists = await Session.findOne({ sessionName: this.sessionName });
+            if (sessionNameExists) return res.status(400).send("Session Name Already Exists.");
+    
+            // CREATING OUR NEW SESSION 
+            const session = new Session(body);
+    
+            // SAVING THE SESSION
+    
+            const savedSession = await session.save();
+            res.json(savedSession);
+        }catch(err){
+            console.error(err);
         }
-
-        // VALIDATING OUR SESSION
-        const { error } = AuthenticateSession(body);
-        if (error) return res.status(400).send(error.details[0].message);
-
-        // CHECKING IF OUR SESSION EXISTS
-        const sessionNameExists = await Session.findOne({ sessionName: this.sessionName });
-        if (sessionNameExists) return res.status(400).send("Session Name Already Exists.");
-
-        // CREATING OUR NEW SESSION 
-        const session = new Session(body);
-
-        // SAVING THE SESSION
-
-        const savedSession = await session.save();
-        res.json(savedSession);
     }
 
     public getAllSessions(res: Response): any{
@@ -112,18 +115,7 @@ export class SessionController extends SessionClass{
             }
          });
     }
-
-    public async getAllUserSessions(user_id: mongoose.Schema.Types.ObjectId, res: Response): Promise<any>{
-        await Session.find({ "author": user_id }, function(err: any, result: any) {
-            if (err) {
-              console.log(err);
-              res.status(400).send(err);
-            } else {
-                res.json(result);
-            }
-        });
-    }
-
+    
     public async updateSession(id: string, res: Response): Promise<any>{
         try{
             const body = {
