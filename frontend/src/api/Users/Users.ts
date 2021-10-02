@@ -6,6 +6,7 @@ import { authEnum } from "../../utils/redux-utils/authEnum";
 import mongoose from "mongoose";
 import { loginDispatchType, registerDispatchType } from "../../utils/types";
 import { Dispatch } from "redux";
+import { AxiosTypes } from "../../global-types";
 
 export class UserClass implements IUser{
     public username?: string;
@@ -66,7 +67,7 @@ export class UserClass implements IUser{
         });
     }
 
-    public loginUser(dispatch: Dispatch<{ type: loginDispatchType, payload?: { user: any }}>){
+    public loginUser(dispatch: Dispatch<{ type: loginDispatchType, payload?: { user: any } | string}>): Promise<any>{
         const data = {
             email: this.email,
             password: this.password
@@ -78,10 +79,14 @@ export class UserClass implements IUser{
             data
         }).then(
 
-            (response: AxiosResponse) => {
+            (response: AxiosResponse<AxiosTypes.UserLoginTypes>) => {
                 try{
                     console.log("Login Response:", response);
-                    localStorage.setItem("token", response.data.user.jsonwebtoken);
+                    localStorage.setItem("token", response.headers['verification-token']);
+
+                    // Testing Token
+
+                    console.log(localStorage.getItem("token"));
 
                     dispatch({
                         type: authEnum.LOGIN_SUCCESS,
@@ -90,14 +95,14 @@ export class UserClass implements IUser{
 
                     dispatch({
                         type: authEnum.SET_MESSAGE,
-                        payload: response.data.message
+                        payload: response.data.message,
                     });
                 }catch(err){
                     console.error(err);
                 }
 
             },
-            (error: AxiosError) => {
+            (error: AxiosError<AxiosTypes.UserRegisterTypes>) => {
 
                 const message =
                     (error.response &&
@@ -119,7 +124,7 @@ export class UserClass implements IUser{
         );
     }
 
-    public registerUser(dispatch: Dispatch<{ type: registerDispatchType, payload?: {}|string }>){
+    public registerUser(dispatch: Dispatch<{ type: registerDispatchType, payload?: {}|string }>): Promise<any>{
         const data = {
             username: this.username,
             email: this.email,
@@ -130,7 +135,7 @@ export class UserClass implements IUser{
             url: user_endpoints.POST_USER,
             method: "POST",
             data
-        }).then((response: AxiosResponse) => {
+        }).then((response: AxiosResponse<AxiosTypes.UserRegisterTypes>) => {
             try{
 
                 console.log(response.data);
@@ -146,7 +151,7 @@ export class UserClass implements IUser{
                 console.error(err);
             }
             },
-            (error: AxiosError) => {
+            (error: AxiosError<AxiosTypes.UserRegisterTypes>) => {
 
                 const message =
                     (error.response &&

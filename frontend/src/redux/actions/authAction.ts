@@ -5,18 +5,14 @@ import { loginDispatchType, registerDispatchType } from "../../utils/types";
 
 export let registerResponse: any;
 
-const register = (username: string, email: string, password: string) => {
-     
-    return function (dispatch: Dispatch<{ type: registerDispatchType, payload?: {}|string }>){
-        return new UserClass(username, email, password).registerUser(dispatch);
-    }
+const register = (username: string, email: string, password: string, dispatch: Dispatch<{ 
+    type: registerDispatchType, payload?: {}|string  }>): Promise<any> => {
+    return new UserClass(username, email, password).registerUser(dispatch);
 };
 
-const login = (username: string, email: string, password: string) => {
-
-    return function (dispatch: Dispatch<{ type: loginDispatchType, payload?: { user: any }}>){
-        return new UserClass(username, email, password).loginUser(dispatch);
-    }
+const login = (email: string, password: string, dispatch: Dispatch<{ 
+    type: loginDispatchType, payload?: { user: any } | string }>) => {
+        return new UserClass("", email, password).loginUser(dispatch);
 }
 
 const logout = () => (dispatch: Dispatch<{ type: authEnum.LOGOUT }>) => {

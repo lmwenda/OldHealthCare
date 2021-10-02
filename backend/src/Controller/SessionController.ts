@@ -22,6 +22,7 @@ export class SessionController extends SessionClass{
         super(sessionName, sessionDescription, timeTaken, author, typeOfWorkout, reps, sets, isPublic, date);
     }
 
+    // THIS METHOD DOESN'T WORK AND IS A BAD METHOD OF DOING SESSION AUTHOR'S
     // public async pushSessionsToUser(user_id: any, res: Response): Promise<any>{
     //     try{
     //         await Session.find({ "author": user_id }, function(err: any, result: any) {

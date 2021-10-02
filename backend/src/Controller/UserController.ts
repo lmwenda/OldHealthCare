@@ -19,29 +19,48 @@ export class UserController extends UserClass{
     }
 
     public async createUser(res: Response): Promise<any>{
+        let password: string;
 
-        const body = {
-            username: this.username,
-            email: this.email,
-            password: this.password
+        if(typeof this.password !== "undefined"){
+            password = this.password;
+
+            const body = {
+                username: this.username,
+                email: this.email,
+                password: this.password
+            }
+
+            // VALIDATING OUR USER
+            const { error } = AuthenticateUser(body);
+            if (error) return res.status(400).send(error.details[0].message);
+
+            // CHECKING IF OUR USER'S EMAIL ALREADY EXISTS
+
+            const emailExists = await User.findOne({ email: this.email});
+            if (emailExists) return res.status(400).send("Email Already Exists.");
+
+            // HASH PASSWORDS
+
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
+
+
+            // CREATING OUR NEW USER
+            const user = new User({
+                username: this.username,
+                email: this.email,
+                password: hashedPassword
+            });
+
+            // SAVING THE User
+
+            const savedUser = await user.save();
+            res.json(savedUser);
+        }else{
+            // This happens if the this.password is undefined
+            res.status(400).send("Password is Required...");
+            console.error("Password is Required...")
         }
-
-        // VALIDATING OUR USER
-        const { error } = AuthenticateUser(body);
-        if (error) return res.status(400).send(error.details[0].message);
-
-        // CHECKING IF OUR USER'S EMAIL ALREADY EXISTS
-
-        const emailExists = await User.findOne({ email: this.email});
-        if (emailExists) return res.status(400).send("Email Already Exists.");
-
-        // CREATING OUR NEW USER
-        const user = new User(body);
-
-        // SAVING THE User
-
-        const savedUser = await user.save();
-        res.json(savedUser);
     }
 
     public async loginUser(res: Response): Promise<any>{
@@ -56,12 +75,18 @@ export class UserController extends UserClass{
             // CHECKING IF OUR USER'S EMAIL IS VALID
 
             const user = await User.findOne({ email: this.email });
-            if(!user) return res.status(400).send('Invalid Email or Password.');
+            if(!user){
+                console.log("Invalid Email or Password.")
+                return res.status(400).send('Invalid Email or Password.');
+            } 
 
             // CHECKING IF OUR PASSWORD IS VALID
 
-            const validPassword = await bcrypt.compare(password, user.password);
-            if(!validPassword) return res.status(400).send("Invalid Email or Password.");
+            const validPassword = await bcrypt.compare(this.password, user.password);
+            if(!validPassword) {
+                console.log("Invalid Email or Password.");
+                return res.status(400).send("Invalid Email or Password.")
+            };
 
             // CREATING AND ASSIGNING A JWT TOKEN
 
@@ -87,6 +112,7 @@ export class UserController extends UserClass{
         }else{
             // This happens if the this.password is undefined
             res.status(400).send("Password is Required...");
+            console.error("Password is Required...")
         }
     }
 

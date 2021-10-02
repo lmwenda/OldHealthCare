@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactTypes } from '../../global-types';
 
 // Components
@@ -12,9 +13,16 @@ import { RegisterHeader } from './Header/RegisterHeader';
 // Styles
 
 import './RegisterPage.css';
+
+// Actions
+
 import { register } from '../../redux/actions';
 
 export default function RegisterPage() {
+
+    const history = useHistory();
+
+    const dispatch = useDispatch();
 
     const [ email, setEmail ] = React.useState<string>("");
     const [ username, setUsername ] = React.useState<string>("");
@@ -28,11 +36,13 @@ export default function RegisterPage() {
         setLoading(true);
 
         // Register the User Credientials
-        // await new Promise((resolve) => setTimeout(resolve, 5000));
 
-        await register(username, email, password);
+        register(username, email, password, dispatch)
+            .then(() => history.push("/login"));
+        await new Promise((resolve) => setTimeout(resolve, 5000));
 
         // Set Loading to False since you have finished all the Register API Logic
+
         setLoading(false);
     }
 

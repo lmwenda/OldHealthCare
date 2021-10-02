@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactTypes } from '../../global-types';
 
 // Components
@@ -12,9 +13,17 @@ import { LoginHeader } from './Header/LoginHeader';
 // Styles
 
 import './LoginPage.css';
+
+// Actions and Util-Types
+
+import { State } from '../../utils/types';
 import { login } from '../../redux/actions';
 
+
 export default function LoginPage() {
+
+    const dispatch = useDispatch();
+    const userAuth = useSelector((state: State) => state.userAuth);
 
     const [ email, setEmail ] = React.useState<string>("");
     const [ password, setPassword ] = React.useState<string>("");
@@ -27,7 +36,8 @@ export default function LoginPage() {
         setLoading(true);
 
         // login the User Credientials
-        login("", email, password);
+        login(email, password, dispatch)
+        await new Promise((resolve) => setTimeout(resolve, 5000));
 
         // Set Loading to False since you have finished all the login API Logic
         setLoading(false);
@@ -49,13 +59,18 @@ export default function LoginPage() {
                     </div>
 
                     {
+                        userAuth.isLoggedIn ? <h2 style={{color: 'green'}}>
+                            Successfully Logged into your Account
+                        </h2> : <h2 style={{color: '#eb3d3d'}}>Invalid Email or Password</h2>
+                    }
+
+                    {
                         loading ? <Spinner /> : null
                     }
 
                     <br />
                 
-                    <form className="login-container___form" style={{ color: "#000" }} 
-                    onSubmit={submitForm}>
+                    <form className="login-container___form" style={{ color: "#000" }}>
                 
                         <input className="input" type="email" placeholder="Email:" onChange={
                             (e: ReactTypes.RCE) => setEmail(e.target.value)

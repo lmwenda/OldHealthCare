@@ -35,6 +35,7 @@ function SubscriptionCard(){
                     <div className="card___content">
                         <p><CheckIcon id="tick" /> View Tournaments </p>
                         <p><CheckIcon id="tick" /> Training Sessions </p>
+                        <p><CheckIcon id="tick" /> Covid Tracker </p>
                     </div>
 
                     <Link id="free-pricing" to="/register">
@@ -68,11 +69,12 @@ function SubscriptionCard(){
                     </div>
 
                     <div className="card___content">
-                        <p><CheckIcon id="tick" /> Create, Update, Delete and View Tournaments </p>
+                        <p><CheckIcon id="tick" /> Tournaments</p>
                         <p><CheckIcon id="tick" /> Training Sessions </p>
                         <p><CheckIcon id="tick" /> Collaborative Training Sessions </p>
                         <p><CheckIcon id="tick" /> Mobile Application </p>
                         <p><CheckIcon id="tick" /> HealthCare Blogs </p>
+                        <p><CheckIcon id="tick" /> Covid Tracker </p>
                     </div>
 
                     <Link id="pricing" to="/premium">
