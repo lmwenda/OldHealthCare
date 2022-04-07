@@ -42,7 +42,7 @@ function Header() {
                 {
                     user.isLoggedIn ? (
                         <div className="start-menu">
-                            <Link id="getting-started" style={{fontSize: '1.2vw'}} to={
+                            <Link id="getting-started" style={{fontSize: '1vw'}} to={
                                 `/account/settings/${localStorage.getItem("token")}`
                             }>
                                 Account Settings

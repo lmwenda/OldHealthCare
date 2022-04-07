@@ -23,8 +23,8 @@ export class UserClass implements IUser{
         this.password = password;
     }
 
-    public async getAllUserSessions(user_id: mongoose.Types.ObjectId): Promise<AxiosResponse>{
-        const data = { user_id }
+    public async getAllUserSessions(user_id: string): Promise<AxiosResponse>{
+        const data = { author: user_id }
         return await request(BASE_URL, {
             url: user_endpoints.GET_ALL_USER_SESSIONS,
             method: "GET",
@@ -44,13 +44,23 @@ export class UserClass implements IUser{
             url: user_endpoints.GET_USER+id,
             method: "GET"
         })
+            .then((response: AxiosResponse) => {
+                console.log(response);
+            })
     }
 
     public getAllUsers(){
         return request(BASE_URL, {
             url: user_endpoints.GET_ALL_USERS,
             method: "GET"
-        });
+        })
+            .then((response: AxiosResponse) => {
+                try{
+                    console.log(response);
+                }catch(err){
+                    console.error(err);
+                }
+            })
     }
 
     public updateUser(id: string){
